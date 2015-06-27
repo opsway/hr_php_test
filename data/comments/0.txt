@@ -1,0 +1,8 @@
+This script in his default mode uses SQLLite for reading data and CSV file for writing data.
+We can change types of storages and types of output if we need this.
+Script need php 5.5+ because several new features are used here. yield, finally, traits.
+
+Also script need installed composer.
+
+Script is represented in two versions. With yield generator (main2.php) ant without it (main.php). We may choose one of them.
+We may run it either cli mode or http mode.

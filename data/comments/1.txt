@@ -1,0 +1,2 @@
+1) Install sqlite. sudo apt-get install php5-sqlite
+2) Run php main.php Db\\Product ConsoleOutput > data/1.txt
