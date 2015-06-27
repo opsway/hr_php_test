@@ -13,7 +13,7 @@ if (defined("CLI_MODE") && CLI_MODE) {
         die('This can be run only on CLI mode.' . PHP_EOL);
     }
     if ((!isset($argv[1])) || (!isset($argv[2]))) {
-        die ('Please input required params: import.php NameReader NameWriter' . PHP_EOL);
+        die ('Please input required params: main.php NameReader NameWriter' . PHP_EOL);
     }
 
     $config['reader'] = $argv[1];
