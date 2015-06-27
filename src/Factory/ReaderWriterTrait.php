@@ -21,7 +21,7 @@ trait ReaderWriterTrait
 
         if (class_exists($namespaceName . '\\' . $className)) {
             $className = $namespaceName . '\\' . $className;
-        } elseif (!class_exists($className)) {
+        } else {
             throw new \RuntimeException(sprintf('Class "%s" in namespace "%s" does not found.' . PHP_EOL, $className, $namespaceName));
         }
         return new $className($params);
