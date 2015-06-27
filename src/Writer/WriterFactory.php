@@ -13,14 +13,14 @@ class WriterFactory
     use ReaderWriterTrait;
 
     /**
-     * @param       $name
+     * @param       $className
      * @param array $params
      *
      * @return WriterInterface
      */
-    static public function create($name, array $params = [])
+    static public function create($className, array $params = [])
     {
-        $instance = static::createInstance($name, $params);
+        $instance = static::createInstance($className, $params);
         if (!($instance instanceof WriterInterface)) {
             throw new \RuntimeException(sprintf('Writer "%s" should implement WriterInterface', get_class($instance)));
         }
