@@ -49,10 +49,6 @@ class Csv implements WriterInterface
      */
     private function checkFileName($filename)
     {
-        if (file_exists($filename)) {
-            throw new \RuntimeException(sprintf('File "%s" already exists. Remove it and run again.', $filename));
-        }
-
         if (!fopen($filename, 'w+')) {
             throw new \RuntimeException(sprintf('Can not create file "%s" for writing data.', $filename));
         }
