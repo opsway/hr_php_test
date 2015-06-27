@@ -9,6 +9,11 @@ class Csv implements WriterInterface
     protected $file;
     protected $filename;
 
+    public function __construct()
+    {
+        $this->checkFileName();
+    }
+
     /**
      * @param $item array
      *
@@ -17,10 +22,7 @@ class Csv implements WriterInterface
     public function write(array $item)
     {
         if (!$this->file) {
-            $this->file = @fopen($this->filename, 'w+');
-            if (!$this->file) {
-                throw new \RuntimeException(sprintf('File "%s" not accessible.', $this->filename));
-            }
+            $this->file = fopen($this->filename, 'w+');
             fputcsv($this->file, array_keys($item));
         }
         return fputcsv($this->file, $item);
@@ -30,6 +32,17 @@ class Csv implements WriterInterface
     {
         if ($this->file) {
             fclose($this->file);
+        }
+    }
+
+    private function checkFileName()
+    {
+        if (file_exists($this->filename)) {
+            throw new \RuntimeException(sprintf('File "%s" already exists. Remove it and run again.', $this->filename));
+        }
+
+        if (!fopen($this->filename, 'w+')) {
+            throw new \RuntimeException(sprintf('Can not create file "%s" for writing data.', $this->filename));
         }
     }
 }
