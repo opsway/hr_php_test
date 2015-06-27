@@ -21,9 +21,11 @@ class WriterFactory
     static public function create($className, array $params = [])
     {
         $instance = static::createInstance($className, $params);
+
         if (!($instance instanceof WriterInterface)) {
             throw new \RuntimeException(sprintf('Writer "%s" should implement WriterInterface', get_class($instance)));
         }
+
         return $instance;
     }
 }

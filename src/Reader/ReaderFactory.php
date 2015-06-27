@@ -14,6 +14,7 @@ class ReaderFactory
         if (!($instance instanceof ReaderInterface)) {
             throw new \RuntimeException(sprintf('Reader "%s" should implement ReaderInterface', get_class($instance)));
         }
+
         return $instance;
     }
 }

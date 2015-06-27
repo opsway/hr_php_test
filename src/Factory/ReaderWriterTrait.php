@@ -19,11 +19,10 @@ trait ReaderWriterTrait
     {
         $namespaceName = (new \ReflectionClass(static::class))->getNamespaceName();
 
-        if (class_exists($namespaceName . '\\' . $className)) {
-            $className = $namespaceName . '\\' . $className;
-        } else {
+        if (!class_exists($fullClassName = $namespaceName . '\\' . $className)) {
             throw new \RuntimeException(sprintf('Class "%s" in namespace "%s" does not found.' . PHP_EOL, $className, $namespaceName));
         }
-        return new $className($params);
+
+        return new $fullClassName($params);
     }
 }
