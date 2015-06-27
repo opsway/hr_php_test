@@ -11,7 +11,15 @@ class Csv implements WriterInterface
 
     public function __construct()
     {
-        $this->checkFileName();
+        if (!count($params = func_get_args()) || !isset($params[0]['filename'])) {
+            throw new \RuntimeException('Need filename in params for csv export');
+        }
+
+        $fileName = $params[0]['filename'];
+
+        if ($this->checkFileName($fileName)) {
+            $this->filename = $fileName;
+        }
     }
 
     /**
@@ -35,14 +43,20 @@ class Csv implements WriterInterface
         }
     }
 
-    private function checkFileName()
+    /**
+     * @param string $filename
+     * @return bool
+     */
+    private function checkFileName($filename)
     {
-        if (file_exists($this->filename)) {
-            throw new \RuntimeException(sprintf('File "%s" already exists. Remove it and run again.', $this->filename));
+        if (file_exists($filename)) {
+            throw new \RuntimeException(sprintf('File "%s" already exists. Remove it and run again.', $filename));
         }
 
-        if (!fopen($this->filename, 'w+')) {
-            throw new \RuntimeException(sprintf('Can not create file "%s" for writing data.', $this->filename));
+        if (!fopen($filename, 'w+')) {
+            throw new \RuntimeException(sprintf('Can not create file "%s" for writing data.', $filename));
         }
+
+        return true;
     }
 }
