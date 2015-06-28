@@ -21,7 +21,7 @@ if (defined("CLI_MODE") && CLI_MODE) {
 
 } else {
 
-    if (PHP_SAPI === 'cli') {
+    if (PHP_SAPI === 'cli' && isset($argv)) {
         die('This can be run only on WEB mode.' . PHP_EOL);
     }
     if ((!isset($_GET['reader'])) || (!isset($_GET['writer']))) {
