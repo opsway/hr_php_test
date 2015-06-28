@@ -10,19 +10,19 @@ namespace OpsWay\Migration\Factory;
 trait ReaderWriterTrait
 {
     /**
-     * @param $name
+     * @param $className
      * @param $params
      *
      * @return mixed
      */
-    static public function createInstance($name, $params)
+    static public function createInstance($className, $params)
     {
-        $namespace = substr(static::class, 0, strrpos(static::class, '\\'));
-        if (class_exists($namespace . '\\' . $name)) {
-            $name = $namespace . '\\' . $name;
-        } elseif (!class_exists($name)) {
-            throw new \RuntimeException(sprintf('Class "%s" does not found.' . PHP_EOL, $name));
+        $namespaceName = (new \ReflectionClass(static::class))->getNamespaceName();
+
+        if (!class_exists($fullClassName = $namespaceName . '\\' . $className)) {
+            throw new \RuntimeException(sprintf('Class "%s" in namespace "%s" does not found.' . PHP_EOL, $className, $namespaceName));
         }
-        return new $name($params);
+
+        return new $fullClassName($params);
     }
 }
