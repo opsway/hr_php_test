@@ -12,7 +12,6 @@ class ConsoleLogger
         $this->debug = $mode;
     }
 
-
     public function __invoke($item, $status, $msg)
     {
         if ((++self::$countItem % 2) == 0 && $this->debug) {
@@ -22,5 +21,4 @@ class ConsoleLogger
             echo "Warning: " . $msg . print_r($item, true) . PHP_EOL;
         }
     }
-
 }
