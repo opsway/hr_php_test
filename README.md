@@ -22,13 +22,13 @@ Usage
 
 * CLI mode
 ```
-php main.php {reader} {writer}
+php cli.php {reader} {writer}
 ```
 * WEB mode
 ```
 php -S localhost:8000
 ```
-  Open browser on http://localhost:8000/web.php?reader=ReaderName&writer=WriterName
+  Open browser on http://localhost:8000/web.php?reader={ReaderName}&writer={WriterName}
   
 
 
@@ -43,7 +43,7 @@ Task description
 Redirect using redirect operator (https://en.wikipedia.org/wiki/Redirection_(computing)#Basic) console output to file data/2.txt. 
 Put the commands you used to data/comments/2.txt. Commit both files.
 
-3. Run main.php in CLI mode for export all products to data/export.csv file. 
+3. Run cli.php in CLI mode for export all products to data/export.csv file.
 Fix bug in CSV writer. Commit export.csv file and fix to repo.
 
 4. Run web.php in WEB mode for export all products to HTML writer. 
@@ -51,10 +51,10 @@ Fix bug with output (remove extra top symbols).
 Take a screenshot with result table and save to data/3.jpg. 
 Commit fix and screenshot to repo.
 
-5. Remove instantiation of ConsoleLogger class from main.php and implement same functionality with anonymous function / closure. 
+5. Remove instantiation of ConsoleLogger class from web.php and implement same functionality (include fixes from 4 task) with anonymous function or closure.
 Commit changes.
 
-6. Write new CSV reader class which should parse export.csv created as a result of Task 3. 
-Write new OutOfStockLogger class that will log in CSV format rows that have only qty == 0 & is_stock == 0
-Run main.php in CLI mode and use created CSV reader and output data to console
-Commit code changes and include result log csv file as /data/output.log.csv
+6. Write new CSV reader class (OpsWay\Migration\Reader\File\Csv) which should parse export.csv created as a result of Task 3.
+Write new OutOfStockLogger class that will log in CSV format (use exist Writer Csv class) rows that have only qty == 0 & is_stock == 0
+Run cli.php in CLI mode with OutOfStockLogger and use created CSV reader with Stub writer
+Commit code changes and include result OutOfStockLogger csv file as /data/output.log.csv
