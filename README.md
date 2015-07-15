@@ -47,14 +47,16 @@ Put the commands you used to data/comments/2.txt. Commit both files.
 Fix bug in CSV writer. Commit export.csv file and fix to repo.
 
 4. Run web.php in WEB mode for export all products to HTML writer. 
-Fix bug with output (remove extra top symbols). 
+Fix bug with output (remove extra top symbols), but don't touch ConsoleLogger class.
 Take a screenshot with result table and save to data/3.jpg. 
 Commit fix and screenshot to repo.
 
-5. Remove instantiation of ConsoleLogger class from web.php and implement same functionality (include fixes from 4 task) with anonymous function or closure.
+5. Copy cli.php to new_cli.php file.
+Remove instantiation of ConsoleLogger class from new_cli.php.
+Implement same functionality (with debug mode = true and counting and output it each 2 item) with anonymous function or closure.
 Commit changes.
 
-6. Write new CSV reader class (OpsWay\Migration\Reader\File\Csv) which should parse export.csv created as a result of Task 3.
-Write new OutOfStockLogger class that will log in CSV format (use exist Writer Csv class) rows that have only qty == 0 & is_stock == 0
-Run cli.php in CLI mode with OutOfStockLogger and use created CSV reader with Stub writer
+6. Write new CSV reader class (OpsWay\Migration\Reader\File\Csv) which should parse export.csv created as a result of Task 3. Reader should return items include keys column which use csv in header (exclude itself).
+Write new OutOfStockLogger class that will log in CSV format (use exist Writer Csv class for writing to file) rows that have only qty == 0 & is_stock == 0
+Run cli.php in CLI mode with OutOfStockLogger instead ConsoleLogger and use created CSV reader with Stub writer
 Commit code changes and include result OutOfStockLogger csv file as /data/output.log.csv

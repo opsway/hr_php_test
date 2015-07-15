@@ -5,9 +5,11 @@ use OpsWay\Migration\Processor\ReadWriteProcessor;
 use OpsWay\Migration\Reader\ReaderFactory;
 use OpsWay\Migration\Writer\WriterFactory;
 
-define("CLI_MODE", true);
 $config = include 'config.php';
 
+if (defined('CLI_MODE') && CLI_MODE === false) {
+    die('This can be run only on CLI mode.' . PHP_EOL);
+}
 echo "Start Time: " . date("d-m-Y H:i:s") . PHP_EOL;
 
 try {

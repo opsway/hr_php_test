@@ -2,7 +2,7 @@
 
 namespace OpsWay\Migration\Tests;
 
-class Task1 extends \PHPUnit_Framework_TestCase {
+class Task1Test extends \PHPUnit_Framework_TestCase {
 
     public function testCheckAnswerTask1()
     {

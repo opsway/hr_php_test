@@ -7,29 +7,22 @@ $config = [
     'params' => []
 ];
 
-if (defined("CLI_MODE") && CLI_MODE) {
-
-    if (PHP_SAPI !== 'cli') {
-        die('This can be run only on CLI mode.' . PHP_EOL);
-    }
-    if ((!isset($argv[1])) || (!isset($argv[2]))) {
-        die ('Please input required params: main.php NameReader NameWriter' . PHP_EOL);
-    }
-
-    $config['reader'] = $argv[1];
-    $config['writer'] = $argv[2];
-
-} else {
-
-    if (PHP_SAPI === 'cli' && isset($argv)) {
-        die('This can be run only on WEB mode.' . PHP_EOL);
-    }
+if (PHP_SAPI !== 'cli') {
     if ((!isset($_GET['reader'])) || (!isset($_GET['writer']))) {
-        die ('Please input required params: main2.php?reader=ReaderName&writer=WriterName' . PHP_EOL);
+        die ('Please input required params: web.php?reader=ClassReader&writer=ClassReader' . PHP_EOL);
     }
 
     $config['reader'] = $_GET['reader'];
     $config['writer'] = $_GET['writer'];
+    @define("CLI_MODE", false);
+} else {
+    if ((!isset($argv[1])) || (!isset($argv[2]))) {
+        die ('Please input required params: cli.php "ClassReader" "ClassWriter"' . PHP_EOL);
+    }
+
+    $config['reader'] = $argv[1];
+    $config['writer'] = $argv[2];
+    @define("CLI_MODE", true);
 }
 
 foreach (glob(__DIR__ . "/config/*.php") as $file) {

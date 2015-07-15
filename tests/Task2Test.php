@@ -6,7 +6,7 @@ use OpsWay\Migration\Processor\YieldProcessor;
 use OpsWay\Migration\Reader\ReaderFactory;
 use OpsWay\Migration\Writer\WriterFactory;
 
-class Task2 extends \PHPUnit_Framework_TestCase {
+class Task2Test extends \PHPUnit_Framework_TestCase {
 
     public function setUp(){
         require_once 'vendor/autoload.php';
@@ -15,6 +15,8 @@ class Task2 extends \PHPUnit_Framework_TestCase {
     public function testCheckAnswerTask2()
     {
         $this->assertFileExists('data/2.txt');
+        $this->assertFileExists('data/comments/2.txt');
+        $this->assertGreaterThan(0, strlen(file_get_contents('data/comments/2.txt')));
 
         $file = file_get_contents('data/2.txt');
         $this->assertContains('Start Time', $file);

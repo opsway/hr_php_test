@@ -5,7 +5,6 @@ use OpsWay\Migration\Processor\YieldProcessor;
 use OpsWay\Migration\Reader\ReaderFactory;
 use OpsWay\Migration\Writer\WriterFactory;
 
-define("CLI_MODE", false);
 $config = include 'config.php';
 
 try {

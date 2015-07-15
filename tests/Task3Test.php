@@ -6,7 +6,7 @@ use OpsWay\Migration\Processor\YieldProcessor;
 use OpsWay\Migration\Reader\ReaderFactory;
 use OpsWay\Migration\Writer\WriterFactory;
 
-class Task3 extends \PHPUnit_Framework_TestCase {
+class Task3Test extends \PHPUnit_Framework_TestCase {
 
     public function setUp(){
         require_once 'vendor/autoload.php';
