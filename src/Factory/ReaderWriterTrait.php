@@ -23,7 +23,7 @@ trait ReaderWriterTrait
             if (class_exists($className)) {
                 $fullClassName = $className;
             } else {
-                throw new \RuntimeException(sprintf('Class "%s" in namespace "%s" does not found.' . PHP_EOL, $className, $namespaceName));
+                throw new \RuntimeException(sprintf('Class "%s" in namespace "%s" is not found.' . PHP_EOL, $className, $namespaceName));
             }
         }
 
