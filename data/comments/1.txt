@@ -1,0 +1,12 @@
+This application have module architecture and compatible with composer.
+Exists two entry points: cli.php for run migration in CLI mode and web.php for WEB mode.
+Cli and web version is same functionality with different internal implementation:
+Cli script use ReadWriteProcessor, web - YieldProcessor for migration data (about processors look below).
+Application have config folder with php config files witch automatically included in entry points.
+Source code contained in "src" folder and use PSR-4 autoloader standard.
+Architecture application contain:
+- Readers - classes which use for read source data, should implement ReaderInterface
+- Writers - classes which use for write source data, should implement WriterInterface
+- Factories - classes which should create instances for reader & writer classes. Should implement ReaderWriterTrait code for creating class instances.
+- Loggers - classes use for logging during processing. Should be callable.
+- Processors - classes implemented main processing in entry points and which use readers, writers, loggers for it. Should implement ProcessorInterface.
