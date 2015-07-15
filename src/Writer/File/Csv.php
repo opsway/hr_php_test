@@ -9,8 +9,9 @@ class Csv implements WriterInterface
     protected $file;
     protected $filename;
 
-    public function __construct()
+    public function __construct(array $params)
     {
+        $this->filename = (isset($params['filename'])) ? $params['filename'] : '';
         $this->checkFileName();
     }
 
@@ -39,7 +40,7 @@ class Csv implements WriterInterface
 
     private function checkFileName()
     {
-        if (file_exists($this->filename)) {
+        if ((!empty($this->filename)) && file_exists($this->filename)) {
             throw new \RuntimeException(sprintf('File "%s" already exists. Remove it and run again.', $this->filename));
         }
     }
