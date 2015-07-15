@@ -15,7 +15,7 @@ class Task6Test extends \PHPUnit_Framework_TestCase {
         require_once 'vendor/autoload.php';
     }
 
-    public function testCheckAnswerTask5()
+    public function testCheckAnswerTask6()
     {
         $this->assertTrue(class_exists('OpsWay\Migration\Reader\File\Csv'), 'Reader csv class does not exists.');
         $processorExpect = new YieldProcessor(
