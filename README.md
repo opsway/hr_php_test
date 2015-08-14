@@ -39,7 +39,7 @@ Task description
 
 1. Investigate application (ignore /tests folder) and write short description (no more than 100 words: how it works for every class you meet in functional on each classes, etc) to data/comments/1.txt file. Commit this file.
 
-2. Run main.php in CLI mode for export all products to console output writer. 
+2. Run cli.php in CLI mode for export all products to console output writer. 
 Redirect using redirect operator (https://en.wikipedia.org/wiki/Redirection_(computing)#Basic) console output to file data/2.txt. 
 Put the commands you used to data/comments/2.txt. Commit both files.
 
