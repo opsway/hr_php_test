@@ -1,5 +1,12 @@
-OpsWay PHP TEST for Senior Developer level
+[Expired] OpsWay PHP TEST for PHP Developers
 ============
+
+Disclamer
+---------
+This was once used to evaluate PHP developer level for recruitment purposes
+
+Description
+-----------
 
 This is example application for data migration from any source data to any destination data.
 
